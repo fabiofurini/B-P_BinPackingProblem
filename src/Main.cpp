@@ -11,6 +11,7 @@ using namespace std;
 #include "BP_MASTER.h"
 #include "BP_PRICER.h"
 #include "BP_BRANCH.h"
+#include "COMPACT.h"
 #include "global_functions.h"
 #include "global_variables.h"
 
@@ -50,14 +51,43 @@ int main(int argc, char** argv)
 	/////////////////////////////////////
 
 	//////////////////////////////////////////////////////////////////////////
-	master_initialize(&inst);
+	if(inst.ALGO==1)
+	{
 
-	cout << "MASTER INITIALIZED...\n";
+		cout << "\n\n**************BRANCH-AND-PRICE...\n\n";
 
-	branch_and_price(&inst,0);
+		master_initialize(&inst);
 
-	master_free(&inst);
+		cout << "MASTER INITIALIZED...\n";
+
+		branch_and_price(&inst,0);
+
+		master_free(&inst);
+
+		cout << "MASTER FREE...\n";
+	}
 	//////////////////////////////////////////////////////////////////////////
+
+	//////////////////////////////////////////////////////////////////////////
+	if(inst.ALGO==2)
+	{
+
+		cout << "\n\n**************COMPACT FORMULATION...\n\n";
+
+		bin_packing_compact_build(&inst);
+
+		cout << "FORMULATION INITIALIZED...\n";
+
+		bin_packing_compact_solve(&inst);
+
+
+		bin_packing_compact_free(&inst);
+
+
+		cout << "FORMULATION FREE...\n";
+	}
+	//////////////////////////////////////////////////////////////////////////
+
 
 
 	/////////////////////////////////////

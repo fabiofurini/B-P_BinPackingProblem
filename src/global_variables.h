@@ -24,7 +24,8 @@ using namespace std;
 #define MAX_COLUMNS 10000
 
 //////////////////////////////////////////////////////////////////////////////////////////////
-#include </home/fabio/ILOG/CPLEX_Studio_AcademicResearch126/cplex/include/ilcplex/cplex.h>
+//#include </home/fabio/ILOG/CPLEX_Studio_AcademicResearch127/cplex/include/ilcplex/cplex.h>
+#include </Users/fabiofurini/Applications/IBM/ILOG/CPLEX_Studio127/cplex/include/ilcplex/cplex.h>
 //////////////////////////////////////////////////////////////////////////////////////////////
 
 typedef struct
@@ -51,8 +52,8 @@ typedef struct
 	///////////////////////////////////////////////////////////////////////////////
 
 	/////////////////////////////////////CPLEX/////////////////////////////////////
-	CPXENVptr env_MASTER,env_PRICER;
-	CPXLPptr  lp_MASTER,lp_PRICER;
+	CPXENVptr env_MASTER,env_PRICER,env_COMPACT;
+	CPXLPptr  lp_MASTER,lp_PRICER,lp_COMPACT;
 	int status,ccnt,rcnt,nzcnt,lpstat,nodecount,cur_numrows,cur_numcols;
 	int* rmatbeg,*rmatind,*cmatbeg, *cmatind;
 	double *rmatval,*cmatval,*rngval,*x,*pi,*obj, *lb, *ub,*rhs,coef_p,objval,bestobjval;
